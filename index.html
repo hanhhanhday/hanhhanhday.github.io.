@@ -34,7 +34,7 @@
         .author-img {
             width: 120px; height: 120px; border-radius: 50%;
             /* ẢNH CỦA BẠN SẼ HIỂN THỊ TẠI ĐÂY (file tải lên github cần tên là avatar.jpg) */
-            background-image: url('avatar.jpg'); 
+            background-image: url('avatar.JPG'); 
             background-size: cover; background-position: center top;
             margin-bottom: 20px;
         }
@@ -47,23 +47,37 @@
         }
         .position span { color: var(--primary-color); font-weight: bold;}
         
-        #main-menu { list-style: none; padding: 0; margin: 0; text-align: center; width: 100%; }
-        #main-menu li { margin-bottom: 12px; }
+        /* --- BẮT ĐẦU ĐOẠN MENU MỚI --- */
+        #main-menu { width: 100%; text-align: center; }
+        #main-menu ul {
+            list-style-type: none; /* Lệnh này xóa dấu chấm tròn */
+            padding: 0; margin: 0;
+        }
+        #main-menu li {
+            margin-bottom: 8px; /* Khoảng cách giữa các dòng */
+            display: flex;
+            justify-content: center;
+        }
         #main-menu li a {
-            text-decoration: none; color: rgba(0,0,0,0.7);
-            font-size: 13px; text-transform: uppercase;
-            letter-spacing: 1px; font-weight: 500; transition: 0.3s;
+            text-decoration: none;
+            color: rgba(0,0,0,0.6);
+            font-size: 14px;
+            font-weight: 500;
+            transition: 0.3s;
+            padding: 8px 20px;
+            border-radius: 4px; /* Bo góc nhẹ */
+            letter-spacing: 0.5px;
         }
-        #main-menu li a:hover { color: var(--primary-color); }
-
-        .sidebar-footer {
-            margin-top: auto; padding-bottom: 20px;
-            text-align: center; font-size: 11px; color: var(--text-gray);
+        #main-menu li a:hover {
+            color: var(--primary-color);
         }
-        .sidebar-footer .social a {
-            color: var(--text-gray); margin: 0 5px; font-size: 14px; text-decoration: none;
+        /* Style cho nút đang được chọn (Home) */
+        #main-menu li.active a {
+            color: var(--primary-color);
+            background-color: rgba(44, 152, 240, 0.1); /* Nền xanh nhạt */
+            font-weight: 600;
         }
-        .sidebar-footer .social a:hover { color: var(--primary-color); }
+        /* --- KẾT THÚC ĐOẠN MENU MỚI --- */
 
         /* ---------------- CỘT PHẢI (MAIN CONTENT) ---------------- */
         #main-content {

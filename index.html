@@ -33,7 +33,7 @@
         }
         .author-img {
             width: 120px; height: 120px; border-radius: 50%;
-            /* ẢNH CỦA BẠN SẼ HIỂN THỊ TẠI ĐÂY (file tải lên github cần tên là avatar.jpg) */
+            /* ẢNH CỦA BẠN SẼ HIỂN THỊ TẠI ĐÂY */
             background-image: url('avatar.JPG'); 
             background-size: cover; background-position: center top;
             margin-bottom: 20px;
@@ -50,11 +50,11 @@
         /* --- BẮT ĐẦU ĐOẠN MENU MỚI --- */
         #main-menu { width: 100%; text-align: center; }
         #main-menu ul {
-            list-style-type: none; /* Lệnh này xóa dấu chấm tròn */
+            list-style-type: none;
             padding: 0; margin: 0;
         }
         #main-menu li {
-            margin-bottom: 8px; /* Khoảng cách giữa các dòng */
+            margin-bottom: 8px;
             display: flex;
             justify-content: center;
         }
@@ -65,19 +65,15 @@
             font-weight: 500;
             transition: 0.3s;
             padding: 8px 20px;
-            border-radius: 4px; /* Bo góc nhẹ */
+            border-radius: 4px;
             letter-spacing: 0.5px;
         }
-        #main-menu li a:hover {
-            color: var(--primary-color);
-        }
-        /* Style cho nút đang được chọn (Home) */
+        #main-menu li a:hover { color: var(--primary-color); }
         #main-menu li.active a {
             color: var(--primary-color);
-            background-color: rgba(44, 152, 240, 0.1); /* Nền xanh nhạt */
+            background-color: rgba(44, 152, 240, 0.1);
             font-weight: 600;
         }
-        /* --- KẾT THÚC ĐOẠN MENU MỚI --- */
 
         /* ---------------- CỘT PHẢI (MAIN CONTENT) ---------------- */
         #main-content {
@@ -99,7 +95,6 @@
         }
         .hero-bg {
             position: absolute; top: 0; right: 0; bottom: 0; width: 55%;
-            /* Gọi file ảnh cover.jpg bạn vừa tải lên */
             background-image: url('cover.JPG'); 
             background-size: cover; 
             background-position: center; 
@@ -108,14 +103,14 @@
         .hero-content { 
             position: relative; 
             z-index: 2; 
-            max-width: 42%; /* Giới hạn độ rộng để không lẹm vào ảnh */
-            padding-right: 20px; /* Tạo khoảng cách thở an toàn với bức ảnh */
+            max-width: 42%;
+            padding-right: 20px;
         }
         .hero h1 {
             font-size: 55px; font-weight: 700; line-height: 1.2;
             margin-bottom: 20px; color: var(--text-dark);
         }
-        .hero p { font-size: 16px; margin-bottom: 30px; letter-spacing: 1px;}
+        .hero p { font-size: 16px; margin-bottom: 30px; letter-spacing: 1px; line-height: 1.6;}
         .btn {
             display: inline-block; padding: 15px 30px;
             background-color: transparent; border: 1px solid #000;
@@ -135,15 +130,67 @@
         .item-box ul { padding-left: 20px; font-size: 15px; }
         .item-box ul li { margin-bottom: 8px; }
 
-        .tags-container { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 15px; }
-        .tag { background: #e0e0e0; padding: 5px 12px; border-radius: 20px; font-size: 12px; color: #333; font-weight: bold;}
+        /* Kỹ năng Grid */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px; margin-top: 20px;
+        }
+        .skill-category h3 {
+            font-size: 16px; color: var(--text-dark);
+            margin-bottom: 15px; border-bottom: 2px solid rgba(44, 152, 240, 0.2);
+            padding-bottom: 8px; display: inline-block;
+        }
+        .skill-category h3 i { color: var(--primary-color); margin-right: 8px; }
+        .tags-container { display: flex; flex-wrap: wrap; gap: 10px; }
+        .tag {
+            background: rgba(44, 152, 240, 0.1); color: var(--primary-color);
+            border: 1px solid rgba(44, 152, 240, 0.3); padding: 6px 14px;
+            border-radius: 20px; font-size: 13px; font-weight: 600; transition: 0.3s;
+        }
+        .tag:hover { background: var(--primary-color); color: #fff; }
+
+        /* --- CỬA SỔ NỔI (MODAL) --- */
+        .modal {
+            display: none; position: fixed; z-index: 999;
+            left: 0; top: 0; width: 100%; height: 100%;
+            background-color: rgba(0,0,0,0.6);
+            backdrop-filter: blur(3px);
+        }
+        .modal-content {
+            background-color: #fff; margin: 4% auto;
+            padding: 40px; border-radius: 8px;
+            width: 80%; max-width: 800px; max-height: 85vh;
+            overflow-y: auto; position: relative;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+        .close-btn {
+            position: absolute; right: 25px; top: 20px;
+            font-size: 30px; font-weight: bold;
+            color: #aaa; cursor: pointer; transition: 0.3s;
+        }
+        .close-btn:hover { color: #000; }
+        .modal-title { font-size: 24px; color: #000; margin-bottom: 20px; margin-top: 0;}
+        .modal-section { margin-bottom: 25px; }
+        .modal-section h4 { color: var(--primary-color); border-bottom: 2px solid #f0f0f0; padding-bottom: 8px; margin-bottom: 10px; font-size: 16px;}
+        .modal-section p, .modal-section ul { font-size: 14.5px; line-height: 1.6; }
+        .modal-img { width: 100%; border-radius: 6px; margin-top: 15px; border: 1px solid #eee; }
+        
+        .btn-detail {
+            display: inline-block; margin-top: 15px; font-size: 13px;
+            color: var(--primary-color); text-decoration: none;
+            font-weight: 700; cursor: pointer;
+        }
+        .btn-detail:hover { text-decoration: underline; }
 
         /* Responsive */
         @media (max-width: 768px) {
             #sidebar { display: none; }
             #main-content { margin-left: 0; width: 100%; }
-            .hero-bg { width: 100%; opacity: 0.3; }
+            .hero-bg { width: 100%; opacity: 0.2; }
             .section { padding: 2em; }
+            .hero-content { max-width: 100%; padding-right: 0;}
+            .modal-content { width: 90%; padding: 25px; }
         }
     </style>
 </head>
@@ -185,7 +232,7 @@
                 <div class="hero-content">
                     <h1>I am <br>a Data Analyst</h1>
                     <p>
-                      Xin chào! Mình là Đinh Hồng Hạnh, một Data Analyst yêu thích việc biến dữ liệu thành những câu chuyện có ý nghĩa. Mình có kinh nghiệm với SQL, Python, ETL, trực quan hóa dữ liệu và Machine Learning để giải quyết các bài toán phân tích trong thực tế. Mình tin rằng dữ liệu không chỉ là những con số mà còn là nền tảng giúp doanh nghiệp hiểu rõ vấn đề và đưa ra quyết định chính xác hơn.
+                      Chào bạn! Tôi là một Data Analyst với niềm đam mê "giải mã" các bộ dữ liệu phức tạp thành những chiến lược kinh doanh thực tiễn. Sở hữu nền tảng kỹ thuật vững chắc từ lập trình (Python, SQL), trực quan hóa dữ liệu đến các mô hình Machine Learning, kết hợp cùng kinh nghiệm xử lý dữ liệu lõi trong lĩnh vực tài chính - ngân hàng. Tôi luôn hướng tới việc khai phá những góc nhìn sâu sắc (actionable insights), giúp tổ chức tối ưu hóa quy trình, kiểm soát rủi ro và đưa ra những quyết định đột phá.
                     </p>
                     <a href="#projects" class="btn">Xem Dự Án <i class="fas fa-briefcase"></i></a>
                 </div>
@@ -199,13 +246,10 @@
             </section>
 
             <!-- Skills Section -->
-           
-            <!-- Skills Section -->
             <section class="section" id="skills">
                 <h2 class="section-title">Kỹ Năng</h2>
                 <div class="skills-grid">
                     
-                    <!-- Nhóm 1: Programming -->
                     <div class="skill-category">
                         <h3><i class="fas fa-terminal"></i> Programming</h3>
                         <div class="tags-container">
@@ -214,7 +258,6 @@
                         </div>
                     </div>
 
-                    <!-- Nhóm 2: Data Processing -->
                     <div class="skill-category">
                         <h3><i class="fas fa-database"></i> Data Processing</h3>
                         <div class="tags-container">
@@ -224,7 +267,6 @@
                         </div>
                     </div>
 
-                    <!-- Nhóm 3: Visualization -->
                     <div class="skill-category">
                         <h3><i class="fas fa-chart-bar"></i> Visualization</h3>
                         <div class="tags-container">
@@ -233,7 +275,6 @@
                         </div>
                     </div>
 
-                    <!-- Nhóm 4: Machine Learning -->
                     <div class="skill-category">
                         <h3><i class="fas fa-brain"></i> Machine Learning</h3>
                         <div class="tags-container">
@@ -242,7 +283,6 @@
                         </div>
                     </div>
 
-                    <!-- Nhóm 5: Domain Knowledge -->
                     <div class="skill-category">
                         <h3><i class="fas fa-briefcase"></i> Domain Knowledge</h3>
                         <div class="tags-container">
@@ -283,6 +323,7 @@
             <section class="section" id="projects">
                 <h2 class="section-title">Dự Án Tiêu Biểu</h2>
                 
+                <!-- Dự án 1 -->
                 <div class="item-box">
                     <h3>Các Yếu tố Ảnh hưởng đến Nhận diện Thương hiệu Highlands Coffee</h3>
                     <span>Học máy & Phân tích Tiếp thị | 03/2026 - 05/2026</span>
@@ -291,8 +332,10 @@
                         <li>Huấn luyện Random Forest, XGBoost; tinh chỉnh hyperparameter để giảm overfitting.</li>
                         <li>Áp dụng SHAP kết hợp mô hình Kano xác định 'Địa điểm' và 'Sản phẩm' là yếu tố cốt lõi.</li>
                     </ul>
+                    <a class="btn-detail" onclick="openModal('modal-highlands')">Xem chi tiết <i class="fas fa-arrow-right"></i></a>
                 </div>
 
+                <!-- Dự án 2 -->
                 <div class="item-box">
                     <h3>Dự đoán Khách hàng Rời bỏ (Customer Churn Prediction)</h3>
                     <span>Học máy & Trí tuệ Doanh nghiệp | 09/2025 - 10/2025</span>
@@ -301,8 +344,10 @@
                         <li>Tinh chỉnh Hồi quy Logistic bằng GridSearchCV đạt Recall 86%.</li>
                         <li>Thiết kế dashboard Power BI và web app Streamlit hỗ trợ dự đoán theo thời gian thực.</li>
                     </ul>
+                    <a class="btn-detail" onclick="openModal('modal-churn')">Xem chi tiết <i class="fas fa-arrow-right"></i></a>
                 </div>
 
+                <!-- Dự án 3 -->
                 <div class="item-box">
                     <h3>Phân tích Xu hướng Vốn Ngành Sản xuất (2015-2023)</h3>
                     <span>Kinh tế lượng & Phân tích Thống kê | 07/2024 - 05/2025</span>
@@ -311,6 +356,7 @@
                         <li>Áp dụng các mô hình Pooled OLS, FEM, REM, GLS bằng Python.</li>
                         <li>Xác định thanh khoản là yếu tố thúc đẩy hiệu suất mạnh nhất.</li>
                     </ul>
+                    <a class="btn-detail" onclick="openModal('modal-finance')">Xem chi tiết <i class="fas fa-arrow-right"></i></a>
                 </div>
             </section>
 
@@ -329,5 +375,100 @@
 
         </div>
     </div>
+
+    <!-- ================= CÁC KHUNG MODAL (ẨN BÊN DƯỚI) ================= -->
+    
+    <!-- Modal: Highlands Coffee -->
+    <div id="modal-highlands" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('modal-highlands')">&times;</span>
+            <h2 class="modal-title">Phân tích Nhận diện Thương hiệu Highlands Coffee</h2>
+            <div class="modal-section">
+                <h4><i class="fas fa-bullseye"></i> Business Insight</h4>
+                <p>Phân tích giá trị SHAP kết hợp mô hình Kano chỉ ra rằng "Địa điểm" (Place) và "Sản phẩm" (Product) là hai yếu tố cốt lõi quyết định nhận diện thương hiệu. Từ đó, đề xuất chiến lược mở rộng mô hình Kiosk và đa dạng hóa dòng sản phẩm tốt cho sức khỏe.</p>
+            </div>
+            <div class="modal-section">
+                <h4><i class="fas fa-cogs"></i> Kỹ thuật & Mô hình</h4>
+                <ul>
+                    <li><strong>Kiểm định:</strong> Cronbach's Alpha (>0,88), Phân tích nhân tố khám phá EFA (KMO=0,800).</li>
+                    <li><strong>Thuật toán:</strong> Random Forest, XGBoost, OLS Linear Regression.</li>
+                    <li><strong>Kết quả:</strong> Tối ưu Hyperparameter (GridSearchCV) đạt R² = 0.7376 trên tập test.</li>
+                </ul>
+            </div>
+            <div class="modal-section">
+                <h4><i class="fas fa-chart-pie"></i> Kết quả trực quan</h4>
+                <!-- Sửa 'anh-highlands.jpg' thành tên ảnh của bạn -->
+                <img src="anh-highlands.jpg" alt="Biểu đồ Highlands" class="modal-img">
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal: Customer Churn -->
+    <div id="modal-churn" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('modal-churn')">&times;</span>
+            <h2 class="modal-title">Dự đoán Khách hàng Rời bỏ (Churn Prediction)</h2>
+            <div class="modal-section">
+                <h4><i class="fas fa-bullseye"></i> Business Insight</h4>
+                <p>Phát hiện "Loại hợp đồng" và "Thời gian gắn bó" là các yếu tố quyết định. Đề xuất 5 chiến lược giữ chân khách hàng bao gồm chuyển đổi hợp đồng, bán chéo (cross-selling) và áp dụng thanh toán tự động.</p>
+            </div>
+            <div class="modal-section">
+                <h4><i class="fas fa-cogs"></i> Kỹ thuật & Mô hình</h4>
+                <ul>
+                    <li><strong>Tiền xử lý:</strong> Phân tích EDA, sử dụng kỹ thuật SMOTE để xử lý mất cân bằng lớp.</li>
+                    <li><strong>Thuật toán:</strong> Logistic Regression (thuật toán tối ưu cuối cùng), Random Forest, XGBoost.</li>
+                    <li><strong>Triển khai:</strong> Dashboard trên Power BI, xây dựng Web App cảnh báo thời gian thực bằng Streamlit. Tối ưu Recall đạt 86%.</li>
+                </ul>
+            </div>
+            <div class="modal-section">
+                <h4><i class="fas fa-chart-pie"></i> Kết quả trực quan</h4>
+                <!-- Sửa 'anh-churn.jpg' thành tên ảnh của bạn -->
+                <img src="anh-churn.jpg" alt="Dashboard Churn Prediction" class="modal-img">
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal: Finance -->
+    <div id="modal-finance" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('modal-finance')">&times;</span>
+            <h2 class="modal-title">Phân tích Xu hướng Vốn Ngành Sản xuất</h2>
+            <div class="modal-section">
+                <h4><i class="fas fa-bullseye"></i> Business Insight</h4>
+                <p>Nghiên cứu trên 4.000 doanh nghiệp sản xuất niêm yết trong giai đoạn 9 năm cho thấy tính thanh khoản là yếu tố quan trọng nhất thúc đẩy hiệu suất (ROA/ROE), nhấn mạnh tầm quan trọng của khả năng thanh toán trong môi trường biến động.</p>
+            </div>
+            <div class="modal-section">
+                <h4><i class="fas fa-cogs"></i> Kỹ thuật & Mô hình</h4>
+                <ul>
+                    <li><strong>Quy trình:</strong> Xử lý dữ liệu từ đầu đến cuối bằng Python và Excel.</li>
+                    <li><strong>Mô hình kinh tế lượng:</strong> Pooled OLS, FEM (Fixed Effects Model), REM (Random Effects Model), GLS (Generalized Least Squares).</li>
+                    <li><strong>Kiểm định:</strong> Lựa chọn mô hình thông qua kiểm định Hausman và các phương pháp thống kê tương quan.</li>
+                </ul>
+            </div>
+            <div class="modal-section">
+                <h4><i class="fas fa-chart-pie"></i> Kết quả trực quan</h4>
+                <!-- Sửa 'anh-finance.jpg' thành tên ảnh của bạn -->
+                <img src="anh-finance.jpg" alt="Phân tích Vốn" class="modal-img">
+            </div>
+        </div>
+    </div>
+
+    <!-- ================= SCRIPT XỬ LÝ MODAL ================= -->
+    <script>
+        // Hàm mở cửa sổ
+        function openModal(modalId) {
+            document.getElementById(modalId).style.display = "block";
+        }
+        // Hàm đóng cửa sổ bằng nút X
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = "none";
+        }
+        // Đóng cửa sổ khi click ra vùng đen bên ngoài
+        window.onclick = function(event) {
+            if (event.target.classList.contains('modal')) {
+                event.target.style.display = "none";
+            }
+        }
+    </script>
 </body>
 </html>

@@ -393,8 +393,8 @@ Mục tiêu: Lượng hóa mức độ tác động của 4 nhóm nhân tố Mar
             <div class="modal-section">
                 <h4><i class="fas fa-chart-line"></i> 2. Khám phá Dữ liệu (EDA) & Tương quan</h4>
                 <ul>
-                    <li><strong>Chân dung khách hàng:</strong> Nhóm 18–34 tuổi, thu nhập 7–15 triệu VNĐ, làm việc văn phòng/HS-SV tại Hà Nội và TP.HCM là phân khúc tiêu dùng chủ đạo[cite: 3]. Tần suất mua phổ biến nhất là 2–3 lần/tuần[cite: 3].</li>
-                    <li><strong>Tương quan (Pearson):</strong> Phân phối (PLA) và Sản phẩm (PRO) có tương quan mạnh nhất với Nhận diện thương hiệu (AW_Target), các biến độc lập gần như không đa cộng tuyến[cite: 3].</li>
+                    <li><strong>Chân dung khách hàng:</strong> Nhóm 18–34 tuổi, thu nhập 7–15 triệu VNĐ, làm việc văn phòng/HS-SV tại Hà Nội và TP.HCM là phân khúc tiêu dùng chủ đạo. Tần suất mua phổ biến nhất là 2–3 lần/tuần.</li>
+                    <li><strong>Tương quan (Pearson):</strong> Phân phối (PLA) và Sản phẩm (PRO) có tương quan mạnh nhất với Nhận diện thương hiệu (AW_Target), các biến độc lập gần như không đa cộng tuyến.</li>
                 </ul>
                 <!-- Bạn có thể thay tên file ảnh hình 1 hoặc hình 2 vào đây -->
                 <img src="hinh-eda-highlands.jpg" alt="Phân tích EDA Highlands" class="modal-img">
@@ -403,19 +403,20 @@ Mục tiêu: Lượng hóa mức độ tác động của 4 nhóm nhân tố Mar
             <div class="modal-section">
                 <h4><i class="fas fa-cogs"></i> 3. Quy trình & Phương pháp thực hiện</h4>
                 <ul>
-                    <li><strong>Dữ liệu:</strong> 2.636 quan sát hợp lệ (thang đo Likert 5 mức)[cite: 3]. Xử lý Missing values (Mode Imputation), mã hóa (Ordinal/One-Hot Encoding) bằng Pandas, Scikit-learn[cite: 3].</li>
-                    <li><strong>Kiểm định:</strong> Cronbach's Alpha (0.886–0.935), KMO (0.800) & Bartlett, Phân tích EFA (Varimax) trích xuất 4 biến PRO, PRI, PLA, PRM[cite: 3].</li>
-                    <li><strong>Mô hình hóa:</strong> OLS Regression (statsmodels) để kiểm định tuyến tính (VIF)[cite: 3]. Huấn luyện Random Forest & XGBoost qua 5-Fold Cross Validation, tinh chỉnh bằng GridSearchCV[cite: 3].</li>
-                    <li><strong>Explainable AI:</strong> Ứng dụng Feature Importance và SHAP (TreeExplainer) để giải thích mô hình[cite: 3].</li>
+                    <li><strong>Thu thập & làm sạch dữ liệu:</strong> Khảo sát định lượng thang đo Likert 5 mức, 2.636 quan sát hợp lệ tại Hà Nội, TP.HCM và các tỉnh thành; xử lý missing values (Mode Imputation), mã hóa biến (Ordinal Encoding / One-Hot Encoding) bằng Python (pandas, scikit-learn)[cite: 3].</li>
+                    <li><strong>Kiểm định độ tin cậy thang đo:</strong> Cronbach's Alpha (0.886–0.935), kiểm định KMO (0.800) & Bartlett (Sig. = 0.000), Phân tích nhân tố khám phá EFA (Varimax) → trích xuất 4 biến đại diện PRO, PRI, PLA, PRM[cite: 3].</li>
+                    <li><strong>Mô hình hồi quy nền (baseline):</strong> OLS Regression bằng statsmodels để lượng hóa quan hệ tuyến tính, kiểm định đa cộng tuyến bằng VIF[cite: 3].</li>
+                    <li><strong>Mô hình học máy:</strong> Huấn luyện & so sánh Random Forest và XGBoost qua 5-Fold Cross Validation; tinh chỉnh siêu tham số bằng GridSearchCV để kiểm soát overfitting[cite: 3].</li>
+                    <li><strong>Diễn giải mô hình (Explainable AI):</strong> Feature Importance và SHAP (TreeExplainer) để xác định chiều hướng & mức độ tác động của từng biến, tăng độ tin cậy khi tư vấn ra quyết định[cite: 3].</li>
                 </ul>
             </div>
 
             <div class="modal-section">
                 <h4><i class="fas fa-poll"></i> 4. Kết quả Mô hình</h4>
                 <ul>
-                    <li><strong>Hồi quy OLS:</strong> R² = 0.761, phương trình Y = -2.49 + 0.53·PRO + 0.09·PRI + 0.61·PLA + 0.42·PRM[cite: 3].</li>
-                    <li><strong>Machine Learning:</strong> Random Forest (R² = 0.738, RMSE = 0.44) vượt trội so với XGBoost (R² = 0.684), kiểm soát tốt overfitting (R² Train giảm từ 0.96 xuống 0.86)[cite: 3].</li>
-                    <li><strong>Đánh giá biến:</strong> Thứ hạng tác động là Phân phối > Sản phẩm > Xúc tiến > Giá cả[cite: 3]. Các biến nhân khẩu học có mức độ tác động rất thấp (< 0.02), chứng tỏ độ phủ thương hiệu mang tính phổ quát[cite: 3].</li>
+                    <li><strong>Hồi quy OLS:</strong> R² = 0.761, phương trình Y = -2.49 + 0.53·PRO + 0.09·PRI + 0.61·PLA + 0.42·PRM.</li>
+                    <li><strong>Machine Learning:</strong> Random Forest (R² = 0.738, RMSE = 0.44) vượt trội so với XGBoost (R² = 0.684), kiểm soát tốt overfitting (R² Train giảm từ 0.96 xuống 0.86).</li>
+                    <li><strong>Đánh giá biến:</strong> Thứ hạng tác động là Phân phối > Sản phẩm > Xúc tiến > Giá cả[cite: 3]. Các biến nhân khẩu học có mức độ tác động rất thấp (< 0.02), chứng tỏ độ phủ thương hiệu mang tính phổ quát.</li>
                 </ul>
                 <!-- Bạn có thể thay tên file ảnh hình 3 (Feature Importance) hoặc 4 (SHAP) vào đây -->
                 <img src="hinh-shap-highlands.jpg" alt="SHAP và Feature Importance" class="modal-img">
@@ -424,21 +425,16 @@ Mục tiêu: Lượng hóa mức độ tác động của 4 nhóm nhân tố Mar
             <div class="modal-section">
                 <h4><i class="fas fa-lightbulb"></i> 5. Insight Kinh doanh & Đề xuất</h4>
                 <ul>
-                    <li><strong>Ưu tiên #1 - Phân phối (Importance ≈ 0.40):</strong> Tối ưu chiều sâu trải nghiệm tại vị trí đắc địa, phát triển mô hình kiosk linh hoạt tại khu dân cư/văn phòng[cite: 3].</li>
-                    <li><strong>Ưu tiên #2 - Sản phẩm:</strong> Duy trì chất lượng dòng sản phẩm di sản, mở rộng dòng RTD/healthy để giữ chân khách hàng trẻ[cite: 3].</li>
-                    <li><strong>Xúc tiến & Giá cả:</strong> Đẩy mạnh nội dung số gắn với câu chuyện thương hiệu[cite: 3]. Không cạnh tranh bằng giảm giá sâu, dùng giá trị cảm nhận (combo, tích điểm) để bảo vệ định vị[cite: 3].</li>
+                    <li><strong>Phân phối (Importance ≈ 0.40):</strong> Tối ưu chiều sâu trải nghiệm tại vị trí đắc địa, phát triển mô hình kiosk linh hoạt tại khu dân cư/văn phòng.</li>
+                    <li><strong>Sản phẩm:</strong> Duy trì chất lượng dòng sản phẩm di sản, mở rộng dòng RTD/healthy để giữ chân khách hàng trẻ.</li>
+                    <li><strong>Xúc tiến & Giá cả:</strong> Đẩy mạnh nội dung số gắn với câu chuyện thương hiệu. Không cạnh tranh bằng giảm giá sâu, dùng giá trị cảm nhận (combo, tích điểm) để bảo vệ định vị.</li>
                 </ul>
-            </div>
-
-            <div class="modal-section">
-                <h4><i class="fas fa-check-circle"></i> 6. Năng lực Thể hiện</h4>
-                <p>Dự án minh chứng khả năng thu thập, làm sạch dữ liệu quy mô lớn; ứng dụng kiểm định thống kê chuyên sâu; xây dựng và tinh chỉnh mô hình Machine Learning; đặc biệt là kỹ năng chuyển đổi kết quả kỹ thuật (SHAP) thành actionable insights và storytelling hiệu quả[cite: 3].</p>
             </div>
 
             <div class="modal-section">
                 <h4><i class="fas fa-folder-open"></i> Minh chứng & Tài liệu</h4>
                 <p>Xem toàn bộ mã nguồn (Source Code), dữ liệu thô và báo cáo phân tích chi tiết của dự án này tại:</p>
-                <a href="ĐIỀN-LINK-GOOGLE-DRIVE-DỰ-ÁN-HIGHLANDS-VÀO-ĐÂY" target="_blank" class="btn-drive">
+                <a href="https://drive.google.com/drive/folders/12U9Zmp2UnhYo7LrJCIvIIE5mGoTghCOh?usp=drive_link" target="_blank" class="btn-drive">
                     <i class="fab fa-google-drive"></i> Xem thư mục dự án
                 </a>
             </div>
